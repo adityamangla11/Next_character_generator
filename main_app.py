@@ -19,7 +19,7 @@ decode = lambda l: ''.join([itos[i] for i in l])
 
 # Streamlit app
 st.title('Shakespeare Text Generator')
-st.write('This app generates text based on a given prompt using a trained Bigram Language Model.')
+st.write('This app generates text based on a given prompt using a decoder only transformer (similar to GPT mechanism).')
 
 # Input prompt and number of tokens slider
 input_txt = st.text_input('Enter a prompt from any Shakespeare text:')
