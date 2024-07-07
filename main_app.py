@@ -39,8 +39,22 @@ model = load_model()
 
 st.write("👇 Click the button below to generate text:")
 # Trigger text generation with a button
+def type_text(text):
+    # Create an empty text element
+    text_element = st.empty()
+    s = ""
+    for char in text:
+        # Update the text element with the next character
+        s += char
+        text_element.write(s+'$ꕯ$')
+        time.sleep(0.004)  # Adjust the sleep duration for the typing speed
+
+    text_element.write(s)
+
 if st.button('Generate Text'):
     if input_txt:
+        st.subheader("Prompt")
+        type_text(input_txt)
         context = torch.tensor(encode(input_txt), dtype=torch.long, device=device).unsqueeze(0)
         
         # Show loading spinner while generating text
@@ -51,7 +65,9 @@ if st.button('Generate Text'):
         
         # Display the generated result and the time taken
         st.subheader('Generated Text:')
-        st.write(result)
+        print(input_txt+result)
+        type_text(input_txt+result)
+        #st.write(result)
         st.write(f"Time taken: {end_time - start_time:.2f} seconds")
     else:
         st.warning('Please enter a prompt to generate text.')
