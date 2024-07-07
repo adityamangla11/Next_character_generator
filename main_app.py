@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-from next_character_gen import BigramLanguageModel
+from next_character_gen import decoder_transformer
 import torch
 
 # Set device for torch
@@ -29,7 +29,7 @@ n_tokens = st.slider('Number of tokens to generate:', 1, 500, 200)
 # Caching the model loading
 @st.cache_resource  # Add the caching decorator
 def load_model():
-    model = BigramLanguageModel().to(device)
+    model = decoder_transformer().to(device)
     model.load_state_dict(torch.load('trained_model_final.pth', map_location=torch.device('cpu')))
     model.eval()
     return model
