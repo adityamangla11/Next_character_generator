@@ -142,7 +142,7 @@ class Block(nn.Module):
         return x
 
 # super simple bigram model
-class BigramLanguageModel(nn.Module):
+class decoder_transformer(nn.Module):
 
     def __init__(self):
         super().__init__()
@@ -192,8 +192,6 @@ class BigramLanguageModel(nn.Module):
         return idx
 
 
-# create a PyTorch optimizer
-
 """
 def train(model,max_iters):
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
@@ -213,25 +211,4 @@ def train(model,max_iters):
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         optimizer.step()
-"""
-
-
-# generate from the model
-"""
-if __name__ == "__main__":
-    model = BigramLanguageModel()
-    model = model.to(device)
-    # print the number of parameters in the model
-    print(sum(p.numel() for p in model.parameters())/1e6, 'M parameters')
-
-    # train the model
-    #train(model, max_iters)
-
-    # save the model
-    inp = input("Enter the first couple of characters: ")
-    context = torch.tensor(encode(inp), dtype=torch.long, device=device).unsqueeze(0)
-    context = torch.zeros((1, 1), dtype=torch.long, device=device)
-    print(context.shape)
-    print(decode(model.generate(context, max_new_tokens=200)[0].tolist()))
-    torch.save(model.state_dict(), 'trained_model.pth')
 """
