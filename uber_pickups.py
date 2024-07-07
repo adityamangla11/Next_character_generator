@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-from next_character_pred import BigramLanguageModel
+from next_character_gen import BigramLanguageModel
 import torch
 
 # Set device for torch
