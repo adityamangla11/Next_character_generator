@@ -9,7 +9,7 @@ import torch
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Read and process text file for character encoding and decoding
-with open('/Users/aditya_mangla/input.txt', 'r', encoding='utf-8') as f:
+with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 chars = sorted(list(set(text)))
 stoi = { ch:i for i,ch in enumerate(chars) }
